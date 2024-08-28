@@ -64,22 +64,17 @@ Route::post('/tasks', function (TaskRequest $request) {
     // Redirects user on previous page after successful adding task
     return redirect()->route('tasks.show', ['task' => $task->id])
     ->with('success','New task has been created!');
-})->name('tasks.store'); // this is the end point  for our form, it will be used to send data from our form to store method in tasks controller
+})->name('tasks.store');
 // end the route of create page and go to show page with success message
 
 // form route of edit page*
 //|--------------------------------------------------------------------------
 Route::put('/tasks/{task}', function (Task $task, TaskRequest $request) {
-    // $data = $request ->validated();
-    // $task->title = $data['title'];
-    // $task->description = $data['description'];
-    // $task->long_description = $data['long_description'];
-    // $task->save();
     $task->update($request->validated());
     // Redirects user on previous page after successful updating task
     return redirect()->route('tasks.show', ['task' => $task->id])
     ->with('success','task has been updated successfully!');
-})->name('tasks.update'); // this is the end point for our form, it will be used to send data from our form to update or edit method in tasks controller
+})->name('tasks.update');
 // end the route of create page and go to show page with success message
 
 
